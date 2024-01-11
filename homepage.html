@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" />
+    <title>Freestyle Dojo - Jiu Jitsu at Toronto's West End</title>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsClub",
+          "name": "Freestyle Dojo",
+          "image": "https://www.freestyledojo.ca/assets/toronto-brazilian-jiu-jitsu-class.webp", 
+          "description": "Freestyle Dojo offers premier Jiu Jitsu training in the heart of Toronto's west end. Dedicated to skill development, respect, and community, our mission is to provide you and our community with world-class martial arts instruction. We do so in an environment that is welcoming, whether you are trying martial arts for the 1st time or already an advanced practitioner.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "191 Geary Ave",
+            "addressLocality": "Toronto",
+            "addressRegion": "ON",
+            "postalCode": "M6H2C1",
+            "addressCountry": "CA"
+          },
+          "areaServed": "West End of Toronto",
+          "telephone": "+16472458829",
+          "url": "https://www.freestyledojo.ca",
+          "openingHours": "Mo,Tu,We,Th,Fr,Sa 07:00-21:00",
+          "priceRange": "$",
+          "geo": {
+            "@type": "GeoCoordinates", 
+            "latitude": "43.66966042362107",
+            "longitude": "-79.4373610190842" 
+          },
+          "review": [{
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Matthew Dobilas"
+            }
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Tomas Kaplan"
+            }
+          }],
+          "sameAs": ["https://www.instagram.com/freestyledojo/", "https://www.facebook.com/profile.php?id=100076292797233", "https://www.youtube.com/@freestyledojo9340"] 
+        }
+    </script>
+    <style>
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;page-break-inside: avoid;
+        }
+        
+        @media (max-width: 768px) {footer span { display: none; } footer phone {display: none;}}
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            /* Resets default margin */
+            display: flex;
+            /* Applies Flexbox */
+        }
+
+        footer ul li {
+            margin-right: 15px;
+        }
+
+        #prices table {
+            border-collapse: collapse;
+            /* Ensures borders are neat */
+            width: 100%;
+            /* Full width */
+        }
+
+        #prices th,
+        #prices td {
+            border: none;
+            /* Hides individual cell borders */
+            text-align: center;
+            /* Aligns text to the left */
+            padding: 3px;
+            /* Adjust padding as needed */
+        }
+
+        #prices tfoot td {
+            font-size: small;
+        }
+
+        p {
+            padding: 0;
+            margin: 10px;
+        }
+
+        .filter-container {
+            color: #000;
+
+            padding: 10px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        .filter-container label {
+            align-items: center;
+            display: flex;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 10px;
+        }
+
+        .schedule-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            margin: 0%;
+            padding: 0%;
+            gap: 5px;
+            color: #000;
+        }
+
+        .day-schedule {
+            border-radius: 10px;
+            border: 1px solid;
+            padding: 10px;
+        }
+
+        .day-schedule h3 {
+            display: block;
+            font-size: 1.17em;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+        }
+
+        .class-entry {
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: gray;
+            color: white;
+        }
+
+        .class-entry p {
+            color: white;
+            font-size: .65rem;
+        }
+
+        .class-entry h4 {
+            color: white;
+            font-size: 1.1em;
+            margin: 0;
+            display: block;
+            margin-block-start: .33em;
+            margin-block-end: .33em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: .7rem;
+        }
+
+        @media (max-width: 768px) {
+            .schedule-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .day-schedule {
+                flex: 1;
+                min-width: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li style="list-style-type: none"><img style="height: 150px;" src="assets/FS-LOGO.png"
+                    alt="Freestyle Dojo Logo" />
+                <strong>Freestyle Dojo</strong>
+            </li>
+        </ul>
+        <ul>
+            <li style="list-style-type: none"><a href="#prices">Prices</a></li>
+            <li style="list-style-type: none"><a href="#schedule">Schedule</a></li>
+            <li style="list-style-type: none"><a href="#about">About Us</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <div class="grid">
+            <section>
+                <hgroup>
+                    <h2>Welcome to Freestyle Dojo</h2>
+                    <h3>Professional Jiu Jitsu gym with expert trainers</h3>
+                </hgroup>
+                <p>At Freestyle our mission is to provide you and our community with world-class martial arts
+                    instruction. We do so in an environment that is welcoming, whether you are trying martial arts for
+                    the 1st time or already an advanced practitioner.</p>
+                <p>Located in the heart of Toronto’s West End, our dojo offers the best classes in a range of martial
+                    arts disciplines. Our expert instructors specialize in teaching Jiu Jitsu, MMA, Fitness &
+                    Conditioning Classes – For Both Kids & Adults.</p>
+                <p>All of our classes start with a free trial so you can try our dojo out and see if it is the right fit
+                    for you and your goals!</p>
+                <p>Freestyle Dojo is your destination for Brazilian Jiu-Jitsu in a clean, modern, and inviting
+                    environment. We believe that the right training space can significantly impact your BJJ journey, and
+                    we've created an atmosphere that fosters learning, hygiene, and a sense of community.</p>
+                <p>Please stop in and try your first class free.</p>
+            </section>
+        </div>
+    </main>
+    <section id="prices" aria-label="Prices">
+        <div class="container">
+            <article>
+                <hgroup>
+                    <h2>Our Prices</h2>
+                    <h3>Are the lowest in Toronto</h3>
+                </hgroup>
+                <table style="width:100%; margin-bottom: 15px;">
+                    <tr>
+                        <th>Adults</th>
+                        <th>Kids</th>
+                        <th>Passes</th>
+                    </tr>
+                    <tr>
+                        <td>Week - $40</td>
+                        <td>3 Months - $375</td>
+                        <td>Class pass - $20</td>
+                    </tr>
+                    <tr>
+                        <td>Month - $160</td>
+                        <td>6 Months - $700</td>
+                        <td>10 Classes - $180</td>
+                    </tr>
+                    <tr>
+                        <td>Year (10% off) - $1728</td>
+                        <td>12 Months - $1350</td>
+                        <td>20 Classes - $350</td>
+                    </tr>
+                </table>
+                <p style="font-size: small; text-align: center;">We also offer family (and couples) discounts<br />*
+                    Plus applicable taxes</p>
+                <div class="container">
+                    <p>At Freestyle Dojo, we keep it simple. We offer one fixed price that covers everything you need to
+                        get started on your BJJ journey. No hidden fees, no surprises—just an affordable way to learn
+                        and train. Here's what you can expect:</p>
+                    <p>One Fixed Price: We offer a single monthly membership fee that grants you unlimited access to all
+                        our classes. Whether you want to train once a week or every day, our pricing remains the same.
+                    </p>
+                    <p>No Belt Testing Fees: We believe that belt promotions should be based on your dedication and
+                        progress, not on additional fees. That's why we do not charge any belt testing fees. Your growth
+                        in BJJ is recognized and celebrated without extra costs.</p>
+                    <p>No Uniform Costs: As a No-Gi gym, we understand that traditional BJJ uniforms (gis) can be
+                        costly. You won't need to invest in specialized clothing when training with us. Comfortable
+                        athletic wear is all you need to get started.</p>
+                    <p>Please stop in and try your first class free, and ask about ongoing specials.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section id="schedule" aria-label="Schedule">
+        <div class="container">
+            <article>
+                <hgroup>
+                    <h2>Our Schedule</h2>
+                    <h3>Joining our community offers much more than regular classes</h3>
+                </hgroup>
+                <div class="schedule-container">
+                    <div class="day-schedule">
+                        <h3>Monday</h3>
+                        <div class="class-entry">
+                            <div>
+                                <h4>All Levels</h4>
+                                <div class="subtitle">Morning Crew</div>
+                                <p>7:00 AM - 8:30 AM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Conditioning</h4>
+                                <div class="subtitle">Strength Training</div>
+                                <p>12:00 PM - 12:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Kids Classes</h4>
+                                <div class="subtitle">4-6 Years</div>
+                                <p>4:00 PM - 4:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Kids Classes</h4>
+                                <div class="subtitle">7-11 Years</div>
+                                <p>4:45 PM - 5:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Beginners</h4>
+                                <div class="subtitle">Advanced Basics</div>
+                                <p>5:45 PM - 7:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>All Levels</h4>
+                                <div class="subtitle">All Levels</div>
+                                <p>5:45 PM - 7:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day-schedule">
+                        <h3>Tuesday</h3>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Open Mat Rolls</h4>
+                                <div class="subtitle">10-Rounds</div>
+                                <p>7:00 AM - 8:30 AM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Beginner Jiu Jitsu</h4>
+                                <div class="subtitle">Advanced Basics</div>
+                                <p>6:00 PM - 7:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Women's Jiu Jitsu</h4>
+                                <div class="subtitle">Women exclusive class</div>
+                                <p>7:00 PM - 8:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>All Levels</h4>
+                                <div class="subtitle">All Levels</div>
+                                <p>7:30 PM - 9:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day-schedule">
+                        <h3>Wednesday</h3>
+                        <div class="class-entry">
+                            <div>
+                                <h4>All Levels</h4>
+                                <div class="subtitle">Morning Crew</div>
+                                <p>7:00 AM - 8:30 AM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Conditioning</h4>
+                                <div class="subtitle">Strength Training</div>
+                                <p>12:00 PM - 12:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Kids Classes</h4>
+                                <div class="subtitle">4-6 Years</div>
+                                <p>4:00 PM - 4:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Kids Classes</h4>
+                                <div class="subtitle">7-11 Years</div>
+                                <p>4:45 PM - 5:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Beginner Jiu Jitsu</h4>
+                                <div class="subtitle">Advanced Basics</div>
+                                <p>5:45 PM - 7:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>All Levels</h4>
+                                <div class="subtitle">All Levels</div>
+                                <p>5:45 PM - 7:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day-schedule">
+                        <h3>Thursday</h3>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Freestyle Session</h4>
+                                <div class="subtitle">Any Questions?</div>
+                                <p>7:00 AM - 8:30 AM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Beginner Jiu Jitsu</h4>
+                                <div class="subtitle">Advanced Basics</div>
+                                <p>6:00 PM - 7:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Freestyle Session</h4>
+                                <div class="subtitle">Open Mat Rolling</div>
+                                <p>7:30 PM - 9:30 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day-schedule">
+                        <h3>Friday</h3>
+                        <div class="class-entry">
+                            <div>
+                                <h4>All Levels</h4>
+                                <div class="subtitle">Morning Crew</div>
+                                <p>7:00 AM - 8:30 AM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Conditioning</h4>
+                                <div class="subtitle">Strength Training</div>
+                                <p>12:00 PM - 12:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Kids Classes</h4>
+                                <div class="subtitle">4-6 Years</div>
+                                <p>4:00 PM - 4:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Kids Classes</h4>
+                                <div class="subtitle">7-11 Years</div>
+                                <p>4:45 PM - 5:45 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>Beginner Jiu Jitsu</h4>
+                                <div class="subtitle">Advanced Basics</div>
+                                <p>5:45 PM - 7:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="class-entry">
+                            <div>
+                                <h4>All Levels</h4>
+                                <div class="subtitle">All Levels</div>
+                                <p>5:45 PM - 7:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day-schedule">
+                        <h3>Saturday</h3>
+                        <div class="class-entry">
+                            <div>
+                                <h4>All Levels</h4>
+                                <div class="subtitle">All Levels</div>
+                                <p>12:00 PM - 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </article>
+        </div>
+    </section>
+    <section id="about" aria-label="About Us">
+        <div class="container">
+            <article>
+                <hgroup>
+                    <h2>About Us</h2>
+                    <h3>Passion & Dedication</h3>
+                </hgroup>
+                <p>At Freestyle Dojo, we are dedicated to teaching the art of Jiu Jitsu with a focus on skill, respect,
+                    and community.</p>
+                <p>The Freestyle Dojo coaches bring their diverse martial arts backgrounds to their classes for a
+                    holistic approach to martial arts training.</p>
+                <div class="grid">
+                    <section>
+                        <p>Mike Romano is the head Jiu Jitsu instructor, founder and owner of Freestyle Dojo. For nearly
+                            14 years he’s studied specifically Nogi Jiu Jitsu.</p>
+                        <p>Mike has trained in the infamous 10th Planet system, lived in the dormitories of Tristar Gym
+                            and traveled all over the world learning techniques from some of the best grapplers on the
+                            planet. His goal is to provide a space where creativity and freedom is nurtured, and to pass
+                            on the knowledge gained from years of experience.</p>
+                    </section>
+                    <section><img src="assets/mike-romano.jpg" alt="Mike Romano - Jiu Jitsu Instructor"></section>
+                </div>
+                    <section>
+                        <p>At Freestyle Dojo, we take pride in offering top-notch facilities that cater to your comfort and well-being. Here's what sets us apart:</p>
+                        <p>Above-Ground Space: Say goodbye to dimly lit basements or cramped corners. Our gym is located in a bright and spacious above-ground setting, providing a welcoming and well-ventilated space for your training.</p>
+                        <p>Premium Mats: Your safety and training experience matter to us. That's why we've invested in high-quality mats that are not only comfortable but also durable. No puzzle mats falling apart here; we've got you covered.</p>
+                        <p>Showers: Hygiene is essential in Brazilian Jiu-Jitsu. After an intense training session, you'll appreciate our on-site showers. Freshen up and feel your best before heading home or back to your day-to-day activities.</p>
+                        <p>Community: Our gym isn't just a place to train. At Freestyle Dojo, you're not just a member; you're part of a welcoming and supportive community. Connect with like-minded individuals who share your passion for fitness and BJJ.</p>
+                    </section>
+                    <section>
+                        <p>Our community goes beyond training. At Freestyle Dojo, you're not just signing up for top-notch No-Gi Jiu-Jitsu training; you're becoming part of a close-knit family. Our community extends far beyond the mats. We believe in building strong relationships, celebrating each other's progress, and enjoying life together.</p>
+                        <p>We're all about fostering a warm, welcoming environment. It's not uncommon to find our members organizing extra training sessions, sharing tips, or supporting each other's goals. Our space is more than a gym; it's a hub for growth and camaraderie.</p>
+                        <p>We love to have fun! Join us for our customer appreciation events like UFC watch parties, thrilling paintball outings, and lively karaoke nights. These gatherings are not just fun; they're where lifelong friendships are forged.</p>
+                        <p>When you join Freestyle Dojo, you gain more than access to our facilities; you become a part of our extended family. Here, every member matters, and together, we celebrate the journey of martial arts and life.</p> 
+                        </section>  
+            </article>
+        </div>
+    </section>
+    <footer class="container">
+        <ul style="list-style-type: none">
+            <li style="list-style-type: none"><a href="https://goo.gl/maps/sbaAUU82DKgeaX3L8" target="_blank"
+                    rel="noopener noreferrer"><i class="fas fa-map-marker-alt"></i><span> 191 Geary Ave, Toronto, ON
+                    M6H2C1</span></a></li>
+            <li style="list-style-type: none"><a href="tel:647-245-8829"><i class="fas fa-phone"></i><phone> 647-245-8829</phone></a>
+            </li>
+        </ul>
+        <ul>
+            <li style="list-style-type: none">
+                <a href="https://www.facebook.com/profile.php?id=100076292797233" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fab fa-facebook"></i></a>
+            </li>
+            <li style="list-style-type: none">
+                <a href="https://www.instagram.com/freestyledojo/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i></a>
+            </li>
+            <li style="list-style-type: none">
+                <a href="https://www.youtube.com/@freestyledojo9340" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i></a>
+            </li>
+        </ul>
+    </footer>
+</body>
+
+</html>
