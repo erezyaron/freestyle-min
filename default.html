@@ -67,10 +67,20 @@
         footer {
             display: flex;
             justify-content: space-between;
-            align-items: center;page-break-inside: avoid;
+            align-items: center;
+            page-break-inside: avoid;
         }
-        
-        @media (max-width: 768px) {footer span { display: none; } footer phone {display: none;}}
+
+        @media (max-width: 768px) {
+            footer span {
+                display: none;
+            }
+
+            footer phone {
+                display: none;
+            }
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
@@ -195,6 +205,25 @@
             }
         }
     </style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init('dPO6h9ESzHv7JRGxA');
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                emailjs.sendForm('freestyle-dojo', 'freestyle-website', this)
+                    .then(function() {
+                        console.log('SUCCESS!');
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -202,13 +231,13 @@
         <ul>
             <li style="list-style-type: none"><img style="height: 150px;" src="assets/FS-LOGO.png"
                     alt="Freestyle Dojo Logo" />
-                <strong>Freestyle Dojo</strong>
             </li>
         </ul>
         <ul>
             <li style="list-style-type: none"><a href="#prices">Prices</a></li>
             <li style="list-style-type: none"><a href="#schedule">Schedule</a></li>
-            <li style="list-style-type: none"><a href="#about">About Us</a></li>
+            <li style="list-style-type: none"><a href="#about">About</a></li>
+            <li style="list-style-type: none"><a href="#contact">Contact</a></li>
         </ul>
     </nav>
     <main class="container">
@@ -289,6 +318,7 @@
                     <h2>Our Schedule</h2>
                     <h3>Joining our community offers much more than regular classes</h3>
                 </hgroup>
+                <p><a href="register.html">Register</a> or <a href="book-a-class.html">book a class</a>, or you can always simply stop by 10 minutes before a class starts to do this at the gym.<br/>And also remember, the first class is always free.</p>
                 <div class="schedule-container">
                     <div class="day-schedule">
                         <h3>Monday</h3>
@@ -517,19 +547,66 @@
                     </section>
                     <section><img src="assets/mike-romano.jpg" alt="Mike Romano - Jiu Jitsu Instructor"></section>
                 </div>
-                    <section>
-                        <p>At Freestyle Dojo, we take pride in offering top-notch facilities that cater to your comfort and well-being. Here's what sets us apart:</p>
-                        <p>Above-Ground Space: Say goodbye to dimly lit basements or cramped corners. Our gym is located in a bright and spacious above-ground setting, providing a welcoming and well-ventilated space for your training.</p>
-                        <p>Premium Mats: Your safety and training experience matter to us. That's why we've invested in high-quality mats that are not only comfortable but also durable. No puzzle mats falling apart here; we've got you covered.</p>
-                        <p>Showers: Hygiene is essential in Brazilian Jiu-Jitsu. After an intense training session, you'll appreciate our on-site showers. Freshen up and feel your best before heading home or back to your day-to-day activities.</p>
-                        <p>Community: Our gym isn't just a place to train. At Freestyle Dojo, you're not just a member; you're part of a welcoming and supportive community. Connect with like-minded individuals who share your passion for fitness and BJJ.</p>
-                    </section>
-                    <section>
-                        <p>Our community goes beyond training. At Freestyle Dojo, you're not just signing up for top-notch No-Gi Jiu-Jitsu training; you're becoming part of a close-knit family. Our community extends far beyond the mats. We believe in building strong relationships, celebrating each other's progress, and enjoying life together.</p>
-                        <p>We're all about fostering a warm, welcoming environment. It's not uncommon to find our members organizing extra training sessions, sharing tips, or supporting each other's goals. Our space is more than a gym; it's a hub for growth and camaraderie.</p>
-                        <p>We love to have fun! Join us for our customer appreciation events like UFC watch parties, thrilling paintball outings, and lively karaoke nights. These gatherings are not just fun; they're where lifelong friendships are forged.</p>
-                        <p>When you join Freestyle Dojo, you gain more than access to our facilities; you become a part of our extended family. Here, every member matters, and together, we celebrate the journey of martial arts and life.</p> 
-                        </section>  
+                <section>
+                    <p>At Freestyle Dojo, we take pride in offering top-notch facilities that cater to your comfort and
+                        well-being. Here's what sets us apart:</p>
+                    <p>Above-Ground Space: Say goodbye to dimly lit basements or cramped corners. Our gym is located in
+                        a bright and spacious above-ground setting, providing a welcoming and well-ventilated space for
+                        your training.</p>
+                    <p>Premium Mats: Your safety and training experience matter to us. That's why we've invested in
+                        high-quality mats that are not only comfortable but also durable. No puzzle mats falling apart
+                        here; we've got you covered.</p>
+                    <p>Showers: Hygiene is essential in Brazilian Jiu-Jitsu. After an intense training session, you'll
+                        appreciate our on-site showers. Freshen up and feel your best before heading home or back to
+                        your day-to-day activities.</p>
+                    <p>Community: Our gym isn't just a place to train. At Freestyle Dojo, you're not just a member;
+                        you're part of a welcoming and supportive community. Connect with like-minded individuals who
+                        share your passion for fitness and BJJ.</p>
+                </section>
+                <section>
+                    <p>Our community goes beyond training. At Freestyle Dojo, you're not just signing up for top-notch
+                        No-Gi Jiu-Jitsu training; you're becoming part of a close-knit family. Our community extends far
+                        beyond the mats. We believe in building strong relationships, celebrating each other's progress,
+                        and enjoying life together.</p>
+                    <p>We're all about fostering a warm, welcoming environment. It's not uncommon to find our members
+                        organizing extra training sessions, sharing tips, or supporting each other's goals. Our space is
+                        more than a gym; it's a hub for growth and camaraderie.</p>
+                    <p>We love to have fun! Join us for our customer appreciation events like UFC watch parties,
+                        thrilling paintball outings, and lively karaoke nights. These gatherings are not just fun;
+                        they're where lifelong friendships are forged.</p>
+                    <p>When you join Freestyle Dojo, you gain more than access to our facilities; you become a part of
+                        our extended family. Here, every member matters, and together, we celebrate the journey of
+                        martial arts and life.</p>
+                </section>
+            </article>
+        </div>
+    </section>
+    <section id="contact" aria-label="Contact Us">
+        <div class="container">
+            <article>
+                <hgroup>
+                    <h2>Contact Us</h2>
+                    <h3>with any questions or comments</h3>
+                </hgroup>
+                <div id="TrialClassForm" className="trial-class-form">
+                    <form id="contact-form" onSubmit=sendEmail>
+                        <input type="text" name="name" placeholder="Full Name" required  />
+                        <input type="email" name="email" placeholder="Email Address" required  />
+                        <input type="tel" name="phone" placeholder="Phone Number" required  />
+                        <input type="text" name="referral" placeholder="Where did you hear about us?"  />
+                        <select name="interest" value="" >
+                            <option value="">Select Interest</option>
+                            <option value="jiu_jitsu">Jiu Jitsu</option>
+                            <option value="fitness">Fitness</option>
+                            <option value="kids">Kids Programs</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="gym rental">Gym Rental</option>
+                        </select>
+                        <textarea name="message" placeholder="Any details you would like to share with our team!"
+                            required></textarea>
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
             </article>
         </div>
     </section>
@@ -537,8 +614,10 @@
         <ul style="list-style-type: none">
             <li style="list-style-type: none"><a href="https://goo.gl/maps/sbaAUU82DKgeaX3L8" target="_blank"
                     rel="noopener noreferrer"><i class="fas fa-map-marker-alt"></i><span> 191 Geary Ave, Toronto, ON
-                    M6H2C1</span></a></li>
-            <li style="list-style-type: none"><a href="tel:647-245-8829"><i class="fas fa-phone"></i><phone> 647-245-8829</phone></a>
+                        M6H2C1</span></a></li>
+            <li style="list-style-type: none"><a href="tel:647-245-8829"><i class="fas fa-phone"></i>
+                    <phone> 647-245-8829</phone>
+                </a>
             </li>
         </ul>
         <ul>
