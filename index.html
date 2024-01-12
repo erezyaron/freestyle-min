@@ -173,21 +173,21 @@
             background-color: #B9AB94;
             color: #1D1D1D;
             border-radius: 10px;
-text-align: center;
+            text-align: center;
         }
 
         .class-entry p {
             color: #1D1D1D;
             font-size: .65rem;
-text-align: center;
-margin-block-start: 0em;
+            text-align: center;
+            margin-block-start: 0em;
             margin-block-end: 0em;
         }
 
         .class-entry h4 {
-text-align: center;
+            text-align: center;
             color: white;
-            
+
             line-height: 1em;
             margin: 0;
             display: block;
@@ -214,35 +214,45 @@ text-align: center;
                 min-width: 250px;
             }
         }
+
         h2 {
             color: #E8B352;
         }
+
         article {
             border: 2px solid #509595;
-    border-radius: 10px;
+            border-radius: 10px;
 
         }
-        th {font-weight: 700; color: #E8B352;}
+
+        th {
+            font-weight: 700;
+            color: #E8B352;
+        }
+
         img {
             border-radius: 10px;
 
         }
 
+        nav {
+            justify-content: center;
+        }
     </style>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
-        (function() {
+        (function () {
             emailjs.init('dPO6h9ESzHv7JRGxA');
         })();
     </script>
     <script type="text/javascript">
-        window.onload = function() {
-            document.getElementById('contact-form').addEventListener('submit', function(event) {
+        window.onload = function () {
+            document.getElementById('contact-form').addEventListener('submit', function (event) {
                 event.preventDefault();
                 emailjs.sendForm('freestyle-dojo', 'freestyle-website', this)
-                    .then(function() {
+                    .then(function () {
                         console.log('SUCCESS!');
-                    }, function(error) {
+                    }, function (error) {
                         console.log('FAILED...', error);
                     });
             });
@@ -252,41 +262,47 @@ text-align: center;
 
 <body>
     <nav class="container-fluid">
-        <ul>
-            <li style="list-style-type: none"><img style="height: 150px;" src="assets/FS-LOGO.png"
-                    alt="Freestyle Dojo Logo" />
-            </li>
-        </ul>
-        <ul>
-            <li style="list-style-type: none"><a href="#prices">Prices</a></li>
-            <li style="list-style-type: none"><a href="#schedule">Schedule</a></li>
-            <li style="list-style-type: none"><a href="#about">About</a></li>
-            <li style="list-style-type: none"><a href="#contact">Contact</a></li>
-        </ul>
+        <div>
+            <img style="height: 150px;" src="assets/FS-LOGO.png" alt="Freestyle Dojo Logo" />
+        </div>
+    </nav>
+    <nav>
+        <div>
+            <ul>
+                <li style="list-style-type: none"><a href="#prices">Prices</a></li>
+                <li style="list-style-type: none"><a href="#schedule">Schedule</a></li>
+                <li style="list-style-type: none"><a href="#about">About</a></li>
+                <li style="list-style-type: none"><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
     <main class="container">
         <article>
-        <div class="grid">
-            <section>
-                <hgroup>
-                    <h2>Welcome to Freestyle Dojo</h2>
-                    <h3>Professional Jiu Jitsu gym with expert trainers</h3>
-                </hgroup>
-                <p>At Freestyle our mission is to provide you and our community with world-class martial arts
-                    instruction. We do so in an environment that is welcoming, whether you are trying martial arts for
-                    the 1st time or already an advanced practitioner.</p>
-                <p>Located in the heart of Toronto’s West End, our dojo offers the best classes in a range of martial
-                    arts disciplines. Our expert instructors specialize in teaching Jiu Jitsu, Fitness &
-                    Conditioning Classes – For Both Kids & Adults.</p>
-                <p>All of our classes start with a free trial so you can try our dojo out and see if it is the right fit
-                    for you and your goals!</p>
-                <p>Freestyle Dojo is your destination for Brazilian Jiu-Jitsu in a clean, modern, and inviting
-                    environment. We believe that the right training space can significantly impact your BJJ journey, and
-                    we've created an atmosphere that fosters learning, hygiene, and a sense of community.</p>
-                <p>Please stop in and try your first class free.</p>
-            </section>
-        </div>
-    </article>
+            <div class="grid">
+                <section>
+                    <hgroup>
+                        <h2>Welcome to Freestyle Dojo</h2>
+                        <h3>Professional Jiu Jitsu gym with expert trainers</h3>
+                    </hgroup>
+                    <p>At Freestyle our mission is to provide you and our community with world-class martial arts
+                        instruction. We do so in an environment that is welcoming, whether you are trying martial arts
+                        for
+                        the 1st time or already an advanced practitioner.</p>
+                    <p>Located in the heart of Toronto’s West End, our dojo offers the best classes in a range of
+                        martial
+                        arts disciplines. Our expert instructors specialize in teaching Jiu Jitsu, Fitness &
+                        Conditioning Classes – For Both Kids & Adults.</p>
+                    <p>All of our classes start with a free trial so you can try our dojo out and see if it is the right
+                        fit
+                        for you and your goals!</p>
+                    <p>Freestyle Dojo is your destination for Brazilian Jiu-Jitsu in a clean, modern, and inviting
+                        environment. We believe that the right training space can significantly impact your BJJ journey,
+                        and
+                        we've created an atmosphere that fosters learning, hygiene, and a sense of community.</p>
+                    <p>Please stop in and try your first class free.</p>
+                </section>
+            </div>
+        </article>
     </main>
     <section id="prices" aria-label="Prices">
         <div class="container">
@@ -323,16 +339,20 @@ text-align: center;
                     <p>At Freestyle Dojo, we keep it simple. We offer one fixed price that covers everything you need to
                         get started on your BJJ journey. No hidden fees, no surprises—just an affordable way to learn
                         and train. Here's what you can expect:</p>
-                    <p><strong>One Fixed Price:</strong> We offer a single monthly membership fee that grants you unlimited access to all
+                    <p><strong>One Fixed Price:</strong> We offer a single monthly membership fee that grants you
+                        unlimited access to all
                         our classes. Whether you want to train once a week or every day, our pricing remains the same.
                     </p>
-                    <p><strong>Belt Testing Fees:</strong> We believe that belt promotions should be based on your dedication and
+                    <p><strong>Belt Testing Fees:</strong> We believe that belt promotions should be based on your
+                        dedication and
                         progress, not on additional fees. That's why we do not charge any belt testing fees. Your growth
                         in BJJ is recognized and celebrated without extra costs.</p>
-                    <p><strong>Uniform Costs:</strong> As a No-Gi gym, we understand that traditional BJJ uniforms (gis) can be
+                    <p><strong>Uniform Costs:</strong> As a No-Gi gym, we understand that traditional BJJ uniforms (gis)
+                        can be
                         costly. You won't need to invest in specialized clothing when training with us. Comfortable
                         athletic wear is all you need to get started.</p>
-                    <p>Please stop in and try your first class <strong>free</strong>, and ask about <strong>ongoing specials</strong>.</p>
+                    <p>Please stop in and try your first class <strong>free</strong>, and ask about <strong>ongoing
+                            specials</strong>.</p>
                 </div>
             </article>
         </div>
@@ -344,7 +364,9 @@ text-align: center;
                     <h2>Our Schedule</h2>
                     <h3>Joining our community offers much more than regular classes</h3>
                 </hgroup>
-                <p><a href="register.html">Register</a> or <a href="book-a-class.html">book a class</a>, or you can always simply stop by 10 minutes before a class starts to do this at the gym.<br/>And also remember, the <strong>first class is always free.</strong></p>
+                <p><a href="register.html">Register</a> or <a href="book-a-class.html">book a class</a>, or you can
+                    always simply stop by 10 minutes before a class starts to do this at the gym.<br />And also
+                    remember, the <strong>first class is always free.</strong></p>
                 <div class="schedule-container">
                     <div class="day-schedule">
                         <h3>Monday</h3>
@@ -557,7 +579,8 @@ text-align: center;
                     holistic approach to martial arts training.</p>
                 <div class="grid">
                     <section>
-                        <p><strong>Mike Romano</strong> is the head Jiu Jitsu instructor, founder and owner of Freestyle Dojo. For nearly
+                        <p><strong>Mike Romano</strong> is the head Jiu Jitsu instructor, founder and owner of Freestyle
+                            Dojo. For nearly
                             14 years he’s studied specifically Nogi Jiu Jitsu.</p>
                         <p>Mike has trained in the infamous 10th Planet system, lived in the dormitories of Tristar Gym
                             and traveled all over the world learning techniques from some of the best grapplers on the
@@ -570,16 +593,20 @@ text-align: center;
                     <h2>Facilities</h2>
                     <p>At Freestyle Dojo, we take pride in offering top-notch facilities that cater to your comfort and
                         well-being. Here's what sets us apart:</p>
-                    <p><strong>Above-Ground Space:</strong> Say goodbye to dimly lit basements or cramped corners. Our gym is located in
+                    <p><strong>Above-Ground Space:</strong> Say goodbye to dimly lit basements or cramped corners. Our
+                        gym is located in
                         a bright and spacious above-ground setting, providing a welcoming and well-ventilated space for
                         your training.</p>
-                    <p><strong>Premium Mats:</strong> Your safety and training experience matter to us. That's why we've invested in
+                    <p><strong>Premium Mats:</strong> Your safety and training experience matter to us. That's why we've
+                        invested in
                         high-quality mats that are not only comfortable but also durable. No puzzle mats falling apart
                         here; we've got you covered.</p>
-                    <p><strong>Showers:</strong> Hygiene is essential in Brazilian Jiu-Jitsu. After an intense training session, you'll
+                    <p><strong>Showers:</strong> Hygiene is essential in Brazilian Jiu-Jitsu. After an intense training
+                        session, you'll
                         appreciate our on-site showers. Freshen up and feel your best before heading home or back to
                         your day-to-day activities.</p>
-                    <p><strong>Community:</strong> Jiu Jitsu goes beyond training. At Freestyle Dojo, you're not just signing up for top-notch
+                    <p><strong>Community:</strong> Jiu Jitsu goes beyond training. At Freestyle Dojo, you're not just
+                        signing up for top-notch
                         No-Gi Jiu-Jitsu instruction, you're becoming part of a close-knit community that extends far
                         beyond the mats. We believe in building strong relationships, celebrating each other's progress,
                         and enjoying life together.</p>
@@ -604,11 +631,11 @@ text-align: center;
                 </hgroup>
                 <div id="TrialClassForm" className="trial-class-form">
                     <form id="contact-form" onSubmit=sendEmail>
-                        <input type="text" name="name" placeholder="Full Name" required  />
-                        <input type="email" name="email" placeholder="Email Address" required  />
-                        <input type="tel" name="phone" placeholder="Phone Number" required  />
-                        <input type="text" name="referral" placeholder="Where did you hear about us?"  />
-                        <select name="interest" value="" >
+                        <input type="text" name="name" placeholder="Full Name" required />
+                        <input type="email" name="email" placeholder="Email Address" required />
+                        <input type="tel" name="phone" placeholder="Phone Number" required />
+                        <input type="text" name="referral" placeholder="Where did you hear about us?" />
+                        <select name="interest" value="">
                             <option value="">Select Interest</option>
                             <option value="jiu_jitsu">Jiu Jitsu</option>
                             <option value="fitness">Fitness</option>
