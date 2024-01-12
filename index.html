@@ -96,23 +96,29 @@
 
         #prices table {
             border-collapse: collapse;
-            /* Ensures borders are neat */
+            border-bottom: 2px solid #509595;
             width: 100%;
-            /* Full width */
+            border-radius: 10px;
         }
 
-        #prices th,
-        #prices td {
-            border: none;
-            /* Hides individual cell borders */
+        #prices th {
+            border-radius: 10px;
+            border-bottom: none;
+            border-top: 2px solid #509595;
+            border-right: 2px solid #509595;
+            border-left: 2px solid #509595;
             text-align: center;
-            /* Aligns text to the left */
             padding: 3px;
-            /* Adjust padding as needed */
         }
 
-        #prices tfoot td {
-            font-size: small;
+        #prices td {
+            border-right: 2px solid #509595;
+            border-left: 2px solid #509595;
+            border-top: none;
+            border-bottom: none;
+            text-align: center;
+            padding: 3px;
+            border-radius: 10px;
         }
 
         p {
@@ -311,7 +317,7 @@
                     <h2>Our Prices</h2>
                     <h3>Are the lowest in Toronto</h3>
                 </hgroup>
-                <table style="width:100%; margin-bottom: 15px;">
+                <table>
                     <tr>
                         <th>Adults</th>
                         <th>Kids</th>
